@@ -1,0 +1,12 @@
+RENEW_CONFIG=$1
+export RENEW_CONFIG
+DOMAIN=$( grep -i domain $RENEW_CONFIG | sed 's/.* = //' )
+echo "Loading domain $DOMAIN"
+certbot certonly \
+  --manual \
+  --preferred-challenges http \
+  --manual-auth-hook "./certbot_renewal.py" \
+  -d $DOMAIN -d www.$DOMAIN
+
+  # --dry-run \
+  # --manual-cleanup-hook "./cleanup_script.sh" \

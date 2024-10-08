@@ -1,0 +1,5 @@
+[wordpress]
+domain = example.com
+username = USERNAME
+application_password = PASSWORD
+
